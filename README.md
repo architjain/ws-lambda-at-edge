@@ -4,6 +4,8 @@
 
 In this workshop you will learn how you can use Lambda@Edge to extend functionality of your web-application or a website.
 
+TBD: architecture diagram here
+
 Launch stack in the us-east-1 region:  
 [![Launch stack in us-east-1](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=WsLambdaAtEdgeAlienCards&templateURL=https://s3.amazonaws.com/ws-lambda-at-edge/bootstrap/cfn-template.json)
 
