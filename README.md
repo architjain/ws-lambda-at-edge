@@ -1,4 +1,4 @@
-# Supercharge your static website with Lamdba@Edge
+# Supercharge your website with Lamdba@Edge
 
 ## Overview
 
@@ -11,37 +11,37 @@ Launch stack in the us-east-1 region:
 
 TBD - Overview
 
-[Lab 1 - Adding Security headers](./1_Security/README.md)
+[Lab 1 - Adding Security headers](./Lab1_Security/README.md)
 
 ## Lab 2 - Content generation
 
 TBD - Overview
 
-[Lab 2 - Content generation](./2_GenerateHtml/README.md)
+[Lab 2 - Content generation](./Lab2_ContentGeneration/README.md)
 
 ## Lab 3 - Simple API
 
 TBD - Overview
 
-[Lab 3 - Simple API](./3_SimpleAPI/README.md)
+[Lab 3 - Simple API](./Lab3_SimpleAPI/README.md)
 
 ## Lab 4 - Pretty URLs
 
 TBD - Overview
 
-[Lab 4 - Pretty URLs](./4_PrettyUrls/README.md)
+[Lab 4 - Pretty URLs](./Lab4_PrettyUrls/README.md)
 
 ## Lab 5 - Customization
 
 TBD - Overview
 
-[Lab 5 - Customization](./5_Customization/README.md)
+[Lab 5 - Customization](./Lab5_Customization/README.md)
 
 ## Lab 6 - Origin Selection
 
 TBD - Overview
 
-[Lab 5 - Origin Selection](./5_OriginSelection/README.md)
+[Lab 6 - Origin Selection](./Lab6_OriginSelection/README.md)
 
 ## Finished! What's next?
 
