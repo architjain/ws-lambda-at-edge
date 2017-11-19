@@ -25,7 +25,7 @@ TBD - Overview
 
 [Lab 3 - Simple API](./3_SimpleAPI/README.md)
 
-## Assignment 4 - Pretty URLs
+## Lab 4 - Pretty URLs
 
 TBD - Overview
 
@@ -41,7 +41,7 @@ TBD - Overview
 
 TBD - Overview
 
-[Assignment 5 - Origin Selection](./5_OriginSelection/README.md)
+[Lab 5 - Origin Selection](./5_OriginSelection/README.md)
 
 ## Finished! What's next?
 
