@@ -37,17 +37,27 @@ Validate that the security headers are now seen in the the execution result of t
 
 ### 4. Publish the function version
 
-Save and publish the function to get a function version ARN.
+Before a Lambda function can be associated with and triggered by a CloudFront distribution, you need to "pubslish" it to get a function version ARN. This "freezes" the function code and configuration so that you can further modify the function while CloudFront still uses the immutable function version.
+
+Choose "Publish new version" under "Actions", specify an optional description of a function version and click "Publish".
+
+Now you have a published function vesion ARN.
 
 ![x](./img/publish.png)
 
 ### 5. Add a trigger
 
-Associate the function with origin-response trigger of the CloudFront distribution.
+The next step is to configure a CloudFront distribution to trigger the Lambda function execution on one of the four event types. This can be done in both Lambda or CloudFront Console.
 
-This can be done either in Lambda or CloudFront Console.
+While we are at the Lambda Console, choose "Add trigger" under "Triggers", you will be presented with an "Add trigger" dialog:
+* In the "Distribution ID" field, find the CloudFront distribution created for this workshop.  
+* Choose the default cache behavior, that is currently the only behavior in the distribution that matches all URI paths with the `*` wildcard.  
+* Choose "Origin Response" event type to trigger the function. We want to add the security headers every time we receive a response from the origin so that the modified response would be cached together with the added security headers in the CloudFront cache.
+* Confirm a global replication of the function by choosing "Enable trigger and replicate"
 
 ![x](./img/add-trigger2.png)
+
+After the trigger has been created, you will see it in the list of triggers of the function version.
 
 ![x](./img/add-trigger3.png)
 
