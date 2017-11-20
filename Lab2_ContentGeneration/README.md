@@ -34,7 +34,7 @@ Use JavaScript code from [ws-lambda-at-edge-generate-card-page.js](./ws-lambda-a
 
 ![x](./img/01-create-function.png)
 
-![x](./img/02-create-function.png)
+![x](./img/02-function-created.png)
 
 #### 1.2 Validate the function works with test-invoke in Lambda Console
 
