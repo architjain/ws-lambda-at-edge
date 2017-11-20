@@ -16,7 +16,7 @@ The result of the scan will be unsatisfactory:
 
 Create a Lambda function in `us-east-1` region that would add the security headers to all responses from the origin in the CloudFront distribution.
 
-Choose `Node.js 6.10` runtime and IAM role named `ws-lambda-edge-basic-<UNIQUE_ID>`, which was created by CloudFormation stack in your account, as an execution role of the function. This will allow pushing logs from your function to CloudWatch Logs.
+Choose `Node.js 6.10` runtime and the IAM role named `ws-lambda-edge-basic-<UNIQUE_ID>`, which was created by CloudFormation stack in your account, as an execution role of the function. This will allow pushing logs from your function to CloudWatch Logs.
 
 Use JavaScript code from [ws-lambda-at-edge-add-security-headers.js](./ws-lambda-at-edge-add-security-headers.js) as a blueprint.
 
@@ -35,7 +35,7 @@ Validate that the security headers are now seen in the the execution result of t
 
 ![x](./img/test-invoke-succeeded.png)
 
-### 4. Publish the function version
+### 4. Publish a function version
 
 Before a Lambda function can be associated with and triggered by a CloudFront distribution, you need to "publish" it to get a function version ARN. This "freezes" the function code and configuration so that you can further modify the function while CloudFront still uses the immutable function version.
 
@@ -45,7 +45,7 @@ Now you have a published function version ARN.
 
 ![x](./img/publish.png)
 
-### 5. Add a trigger
+### 5. Create a trigger
 
 The next step is to configure a CloudFront distribution to trigger the Lambda function execution on one of the four event types. This can be done in both Lambda or CloudFront Console.
 
