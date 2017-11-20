@@ -2,7 +2,7 @@
 
 Security always comes first.
 
-Let's improve our website safity by adding a number of security headers to enforce HTTPS and prevent XSS.
+Let's check and improve our website safity by adding a number of security headers to enforce HTTPS and prevent XSS.
 
 ### 1. Scan the website for security vulnerabilities
 
@@ -14,25 +14,26 @@ The result of the scan will be unsatisfactory:
 
 ### 2. Create a Lambda function
 
-```
-   Name:          ws-lambda-edge-add-security-headers
-   Role:          Choose an existing role
-   Existing role: ws-lambda-edge-basic-<UNIQUE_ID>
-   Runtime:       Node.js 6.10
+Create a Lambda function in `us-east-1` region that would add the security headers to all responses from the origin in the CloudFront disribution.
 
-   Use the blueprint: ./ws-lambda-edge-add-security-headers.js
-```
+Choose `Node.js 6.10` runtime and IAM role named `ws-lambda-edge-basic-<UNIQUE_ID>`, which was created by CloudFormation stack in your account, as an execution role of the function. This will allow pushing logs from your function to CloudWatch Logs.
+
+Use JavaScript code from [ws-lambda-at-edge-add-security-headers.js](./ws-lambda-at-edge-add-security-headers.js) as a blueprint.
 
 ![x](./img/create-function.png)
 
 ### 3. Validate the function works with test-invoke in Lambda Console
 
-Use event template "CloudFront Modify Response Header". Validate the security headers are now seen in the the execution result of the test invocation.
+When the function is created and is ready to be associated with a CloudFront distribution, it's highly recommended to first test it to make sure it executes successfully and produces the expected outcome. This can be done using a test invoke in Lambda Console. Save the function and click `Test`.
+
+You will be prompted with a window that allows you to create a test event - an input for your function. Use the event template called "CloudFront Modify Response Header".
 
 ![x](./img/configure-test-event.png)
 
-![x](./img/test-invoke-succeeded.png)
+Now the function can be tested with the configured test event.  
+Validate that the security headers are now seen in the the execution result of the test invocation.
 
+![x](./img/test-invoke-succeeded.png)
 
 ### 4. Publish the function version
 
