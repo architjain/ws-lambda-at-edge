@@ -2,7 +2,7 @@
 
 Security always comes first.
 
-Let's check and improve our website safety by adding a number of security headers to enforce HTTPS and prevent XSS.
+Let's check and improve our website security by configuring HTTP to HTTPs redirect and adding a number of standard security headers to enforce HTTPS connection is always used and prevent XSS.
 
 ### 1. Scan the website for security vulnerabilities
 
