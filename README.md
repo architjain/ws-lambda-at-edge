@@ -22,7 +22,7 @@ Let's check and improve our website security by configuring HTTP to HTTPs redire
 
 ## Lab 2 - Content generation
 
-TBD - Overview
+Learn how to create a Lambda function that dynamically generates HTML content that can be cached by CloudFront and returned back to your viewers.
 
 [Lab 2 - Content generation](./Lab2_ContentGeneration/README.md)
 
