@@ -6,12 +6,17 @@ In this workshop you will learn how you can use Lambda@Edge to extend functional
 
 TBD: architecture diagram here
 
-Launch stack in the us-east-1 region:  
-[![Launch stack in us-east-1](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=WsLambdaAtEdgeAlienCards&templateURL=https://s3.amazonaws.com/ws-lambda-at-edge/bootstrap/cfn-template.json)
+Region | Button
+------------ | -------------
+us-east-1 | [![Launch stack in us-east-1](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=WsLambdaAtEdgeAlienCards&templateURL=https://s3.amazonaws.com/ws-lambda-at-edge/bootstrap/cfn-template.json)
+
+TBD: what will be created with by CloudFormation
 
 ## Lab 1 - Security
 
-TBD - Overview
+Security always comes first.
+
+Let's check and improve our website security by configuring HTTP to HTTPs redirect and adding a number of standard security headers to enforce HTTPS connection is always used and prevent XSS.
 
 [Lab 1 - Adding Security headers](./Lab1_Security/README.md)
 
