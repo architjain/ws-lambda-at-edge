@@ -4,8 +4,8 @@ const http = require('https');
 const AWS = require('aws-sdk');
 const ddb = new AWS.DynamoDB({apiVersion: '2012-10-08', region: 'us-east-1'});
 
-const ddbTableName = 'AlienCards-ae4589f0';
-const cfDomainName = 'd1dienny4yhppe.cloudfront.net';
+const ddbTableName = FIXME; // Copy DynamoDB table name here, for example, 'AlienCards-ae4589f0'
+const cfDomainName = FIXME; // Copy CloudFront domain name here, for example, 'd1dienny4yhppe.cloudfront.net';
 const pathCardTmpl = '/templates/card.html';
 
 // The generated page contains some dynamic data, so we don't want
@@ -91,10 +91,10 @@ function ddbGet(params) {
     return new Promise((resolve, reject) =>
         ddb.getItem(params, (err, data) => {
             if (err) {
-                console.log('ddb err:' + JSON.stringify(err, null, 2));
+                console.log('ddb err: ' + JSON.stringify(err, null, 2));
                 reject(err);
             } else {
-                console.log('ddb data:' + JSON.stringify(data, null, 2));
+                console.log('ddb data: ' + JSON.stringify(data, null, 2));
                 resolve(flattenItem(data));
             }
         })

@@ -4,8 +4,8 @@ const http = require('https');
 const AWS = require('aws-sdk');
 const ddb = new AWS.DynamoDB({apiVersion: '2012-10-08', region: 'us-east-1'});
 
-const ddbTableName = 'AlienCards-ae4589f0';
-const cfDomainName = 'd1dienny4yhppe.cloudfront.net';
+const ddbTableName = FIXME; // Copy DynamoDB table name here, for example, 'AlienCards-ae4589f0'
+const cfDomainName = FIXME; // Copy CloudFront domain name here, for example, 'd1dienny4yhppe.cloudfront.net';
 const pathIndxTmpl = '/templates/index.html';
 
 exports.handler = (event, context, callback) => {
@@ -85,7 +85,8 @@ function ddbScan(params) {
                 reject(err);
             } else {
                 console.log('ddb data: ' + JSON.stringify(data, null, 2));
-                const items = data.Items.map(flattenItem)
+                const items = data.Items
+                    .map(flattenItem)
                     .sort((a, b) => { return (a.Likes > b.Likes) ? -1 : 1; });
                 console.log('ddb sorted items: ' + JSON.stringify(items, null, 2));
                 resolve(items);
