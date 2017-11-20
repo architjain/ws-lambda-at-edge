@@ -6,8 +6,10 @@ In this lab, you will learn how to create a Lambda function that dynamically gen
 
 If you navigate your web browser to the domain name of the CloudFront distribution created by CloudFormation for this workshop, you will find that the distribution just points to an S3 bucket with some static HTML content and jpeg files.
 
-The home page of the CloudFront distribution (replace the `d123.cloudfront.net` domain name with the unique name of your distribution) displays a static HTML page with a list of images:  
+The home page of the CloudFront distribution displays a static HTML page with a list of images:  
 https://d123.cloudfront.net
+
+**NOTE:** Here and below throughout the workshop, replace the example domain name `d123.cloudfront.net` with the unique name of your distribution.
 
 If you click on a particular image, you will be forwarded to a jpeg file:  
 https://d123.cloudfront.net/card/960w/da8398f4.jpg
@@ -42,7 +44,7 @@ Click "Test" and configure the test event. Specify `/card/da8398f4` as the value
 
 ![x](./img/03-configure-test-event.png)
 
-Execute the test-invoke and validate the function is executed with `200` status code and the `body` field contains a meaningful HTML document.
+Execute the test-invoke and validate the function has returned `200` status code and the `body` field contains a meaningful HTML document.
 
 ![x](./img/04-test-invoke-successful.png)
 
@@ -66,9 +68,9 @@ After the trigger has been created, you will see it in the list of triggers of t
 
 ![x](./img/08-trigger-created.png)
 
-#### 1.5 Validate the generated HTML page in a web browser
+#### 1.5 The generated card details page is now served by CloudFront
 
-Go to the card details page (use your unique CloudFront distribution domain name):  
+Go to the card details page:  
 https://d123.cloudfront.net/card/da8398f4  
 
 You should be seeing a page like this:
@@ -76,3 +78,59 @@ You should be seeing a page like this:
 ![x](./img/09-card-page-generated.png)
 
 ### 2. Content generation for the home page
+
+At the moment, the home page of our distribution just show a static HTML file. Let's make it more dynamic by generating it on the fly with Lambda@Edge so that the cards with the highest rating appear on the top and also a short card description pop ups over the image on mouse hover.
+
+https://d123.cloudfront.net/
+
+#### 2.1 Create a lambda function
+
+Create a Lambda function similar to the previous one. Name it `ws-lambda-at-edge-generate-home-page` and use JavaScript code from [ws-lambda-at-edge-generate-home-page.js](./ws-lambda-at-edge-generate-home-page.js) as a blueprint.
+
+![x](./img/12-function-created.png)
+
+#### 2.2 Validate the function works with test-invoke in Lambda Console
+
+Click "Test" and configure the test event. Specify `/index.html` as the value of the `uri` field.
+
+![x](./img/13-configure-test-event.png)
+
+Execute the test-invoke and validate the function has returned `200` status code and the `body` field contains a meaningful HTML document.
+
+![x](./img/14-test-invoke-successful.png)
+
+#### 2.3 Publish a function version
+
+Choose "Publish new version" under "Actions", specify an optional description of a function version and click "Publish".
+
+![x](./img/15-version-published.png)
+
+#### 2.4 Create cache bahevior for the home page
+
+Go to CloudFront Console and find the distribution created for this workshop. Under the "Behaviors" tab, click "Create Behavior". Choose the following settings:
+* Path Pattern: /index.html
+* Viewer Protocol Policy: "Redirect HTTP to HTTPS"
+* Object Caching: Customize
+* Min, Max and Default TTL: 0, 5, 5 respectively (this would cache the generated home page for 5 seconds max)
+* Lambda Function Associations: Origin Request = <lambda version ARN from the previous step>
+  
+![x](./img/16-create-cb-and-trigger.png)
+
+#### 2.5 Wait for the change to propagate
+
+After any modification of a CloudFront distribution, the change should be propagated globally to all CloudFront edge locations. The propagation status is indicated as "In Progress" and "Deployed" when it's complete. Usually ~30-60seconds is enough for the change to take effect, even though the status may be still "In Progress". To be 100% certain though you can wait until the change is fully deployed.
+
+#### 2.6 Invalidate CloudFront cache
+
+CloudFront may have already cached the old version home page, let's purge any stale objects from the cache. Submit a wildcard invalidation '/*'.
+
+![x](./img/17-invalidate.png)
+
+#### 2.7 The generated home page is now served by CloudFront
+
+Go to the home page:  
+https://d123.cloudfront.net/  
+
+You should be seeing a page like this:
+
+![x](./img/18-home-page-generated.png)
