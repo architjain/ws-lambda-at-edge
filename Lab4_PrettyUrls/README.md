@@ -32,10 +32,23 @@ TBD
 You can test it with command line
 
 ```
-curl https://d123.cloudfront.net/r/tree
+curl --head https://d1ctqrad8iuo6u.cloudfront.net/r/tree
+
+HTTP/1.1 302 Moved Temporarily
+Content-Length: 0
+Connection: keep-alive
+Server: CloudFront
+Date: Tue, 21 Nov 2017 20:08:35 GMT
+Location: /card/da8398f4
+Age: 41
+X-Cache: Hit from cloudfront
+Via: 1.1 5d89a565ccf3467bf90667ebfc36953c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: Qz81dgRMzEiac5P5cvxfuXXZRe7ub_MTUQ8PozB1t0ogSkBYSrRMXg==
 ```
+
 Or by navigating you web browser to  
 https://d123.cloudfront.net/r/tree  
+
 which now should be redirected to  
 https://d123.cloudfront.net/card/da8398f4  
 
