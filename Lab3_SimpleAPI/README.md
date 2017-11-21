@@ -21,13 +21,13 @@ Use JavaScript code from [ws-lambda-at-edge-api-like.js](./ws-lambda-at-edge-api
 
 ### 2. Validate the function works with test-invoke in Lambda Console
 
-Click "Test" and configure the test event. You can use "CloudFront Simple Remote Call" event template. 
+Click "Save and Test" and configure the test event. You can use the "CloudFront Simple Remote Call" event template. 
 
 Specify `/api/like` and `id=da8398f4` as the values of the `uri` and `querystring` fields respectively.
 
 ![x](./img/03-configure-test-event.png)
 
-Execute the test-invoke and validate the function has returned `200` status code and the `body` field contains a meaningful HTML document.
+Click "Test" and validate the function has returned `200` status code and the `body` field contains a meaningful HTML document.
 
 ![x](./img/04-test-invoke-successful.png)
 
@@ -40,7 +40,7 @@ Choose "Publish new version" under "Actions", specify an optional description of
 ### 4. Create cache behavior for the API URI
 
 Go to CloudFront Console and find the distribution created for this workshop. Under the "Behaviors" tab, click "Create Behavior". Choose the following settings:
-* Path Pattern: /api/like
+* Path Pattern: `/api/like`
 * Viewer Protocol Policy: "Redirect HTTP to HTTPS"
 * Query String Forwarding and Caching: "Forward all, cache based on all"
 * Lambda Function Associations: Origin Request = <lambda version ARN from the previous step>
