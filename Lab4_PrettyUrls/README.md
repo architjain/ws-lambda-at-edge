@@ -1,6 +1,6 @@
 ## Lab 4: Pretty URLs
 
-In this lab, we will use Lambda@Edge to introduce pretty semantic URLs to our web application. Pretty URLs are easy to read and remember, they also help with search engine optimization and allow your viewers to use the descriptive links in social media.
+In this lab, we will use Lambda@Edge to introduce pretty semantic URLs to our web application. Pretty URLs are easy to read and remember. They also help with search engine optimization and allow your viewers to use the descriptive links in social media.
 
 Currently, we display card details at the URL like this one:  
 `(a)` https://d123.cloudfront.net/card/da8398f4  
@@ -12,7 +12,6 @@ There are two common ways to serve content with pretty URLs:
 * Rewrtie URIs at your proxy or an origin web server before the content is served.
 
 We will cover both of these approaches with Lambda@Edge.
-
 
 ### 1. Redirect response generation
 
@@ -30,9 +29,21 @@ TBD
 
 #### 1.4 Redirects now work!
 
-TBD
+You can test it with command line
+
+```
+curl https://d123.cloudfront.net/r/tree
+```
+Or by navigating you web browser to  
+https://d123.cloudfront.net/r/tree  
+which now should be redirected to  
+https://d123.cloudfront.net/card/da8398f4  
 
 ### 2. URI rewrite
+
+The URI rewrite approach has two advantages over the redirect:
+* Faster content delivery as there is no need for an extra round-trip between the servere and the client to handle the redirect
+* The semantic URL stays in the address bar of the web browser
 
 #### 2.1 Create/modify the Lambda function
 
@@ -59,4 +70,7 @@ TBD
 
 #### 2.3 URI rewrite now works!
 
-TBD
+Now both URLs show exactly the same content.
+
+* https://d123.cloudfront.net/card/da8398f4  
+* https://d123.cloudfront.net/tree
