@@ -1,14 +1,47 @@
-=== Assignment 4: Pretty URLs ===
+## Lab 4: Pretty URLs
 
-Instead of having an ugly
-https://d3rugkzdgfe4op.cloudfront.net/item/k9b430fc
+In this lab, we will use Lambda@Edge to introduce pretty semantic URLs to our web application. Pretty URLs are easy to read and remember, they also help with search engine optimization and allow your viewers to use the descriptive links in social media.
 
-We can have a pretty URL like
-https://d3rugkzdgfe4op.cloudfront.net/r/cat
-that would either redirect to the item page or rewrite URI internally to keep it clean
+Currently, we display card details at the URL like this one:  
+`(a)` https://d123.cloudfront.net/card/da8398f4  
+an example of the corresponding semantic URL would be something like:  
+`(b)` https://d123.cloudfront.net/tree
 
-1. Create a Lambda function that would generate a redirect based on URI
+There are two common ways to serve content with pretty URLs:
+* Accept request to the semantic URLs `(b)` and redirect it to the URLs accepted by the origin `(a)`
+* Rewrtie URIs at your proxy or an origin web server before the content is served.
 
-2. Create cache behavior /r/* and associate origin-request with the Lambda function
+We will cover both of these approaches with Lambda@Edge.
 
-3. Validate
+
+### 1. Redirect response generation
+
+#### 1.1 Create a Lambda function
+
+TBD
+
+#### 1.2 Validate in lambda console
+
+TBD 
+
+#### 1.3 Create a cache behavior
+
+TBD
+
+#### 1.4 Redirects now work!
+
+TBD
+
+### 2. URI rewrite
+
+#### 2.1 Create/modify the Lambda function
+
+TBD
+
+#### 2.2 Validate in lambda console
+
+TBD
+
+#### 2.3 URI rewrite now works!
+
+TBD
