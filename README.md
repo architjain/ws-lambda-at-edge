@@ -48,5 +48,5 @@ TBD - Overview
 
 ## Workshop Cleanup
 
-1. Delete all files from the S3 bucket (`ws-lambda-at-edge-<unique_id>`) created by CloudFormation stack for this workshop.
+1. Delete all files from the S3 bucket `ws-lambda-at-edge-<unique_id>` created by CloudFormation stack for this workshop.
 1. Delete the CloudFormation stack named `WsLambdaAtEdgeAlienCards`.
