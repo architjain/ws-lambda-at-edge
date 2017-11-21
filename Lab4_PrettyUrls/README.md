@@ -118,11 +118,11 @@ This can be achieved with the code snippet below. Paste it at the beginning of `
 
 Update the test event, click "Configure test events" inside the dropdown list of test events next to the "Test" button.
 
-![x](./img/12-configure-test-event-1.png)
+![x](./img/12-configure-test-event.png)
 
 Change the `uri` field value to `/tree`.
 
-![x](./img/13-configure-test-event-2.png)
+![x](./img/13-configure-test-event.png)
 
 #### 2.3 Publish a function version
 
