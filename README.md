@@ -8,6 +8,12 @@ Region | Button
 ------------ | -------------
 us-east-1 | [![Launch stack in us-east-1](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=WsLambdaAtEdgeAlienCards&templateURL=https://s3.amazonaws.com/ws-lambda-at-edge/bootstrap/cfn-template.json)
 
+## Lab 0 - Launch the stack
+
+TBD
+
+[Lab 0 - Launch the stack](./Lab0_LaunchTheStack/README.md)
+
 ## Lab 1 - Security
 
 Security always comes first.
