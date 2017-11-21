@@ -17,15 +17,36 @@ We will cover both of these approaches with Lambda@Edge.
 
 #### 1.1 Create a Lambda function
 
-TBD
+reate a Lambda function in the `us-east-1` region, `Node.js 6.10` runtime and the IAM role named `ws-lambda-edge-full-access-<UNIQUE_ID>`.
+
+Use JavaScript code from [ws-lambda-edge-redirect.js](./ws-lambda-edge-redirect.js) as a blueprint.
+
+![x](./img/01-create-function.png)
 
 #### 1.2 Validate in lambda console
 
-TBD 
+Click "Save and Test" and configure the test event. You can use the "CloudFront HTTP Redirect" event template. 
 
-#### 1.3 Create a cache behavior
+Specify `/r/tree` as the value of the `uri` fields.
 
-TBD
+![x](./img/03-configure-test-event.png)
+
+Click "Test" and validate the function has returned `302` status code with the location header value equal to `/card/da8398f4`.
+
+![x](./img/04-test-invoke-successful.png)
+
+#### 1.3 Publish a function version
+
+Choose "Publish new version" under "Actions", specify an optional description of a function version and click "Publish".
+
+#### 1.4 Create a cache behavior
+
+Go to CloudFront Console and find the distribution created for this workshop. Under the "Behaviors" tab, click "Create Behavior". Choose the following settings:
+* Path Pattern: `/r/*`
+* Viewer Protocol Policy: "Redirect HTTP to HTTPS"
+* Lambda Function Associations: Origin Request = <lambda version ARN from the previous step>
+  
+![x](./img/05-create-cache-behavior.png)
 
 #### 1.4 Redirects now work!
 
