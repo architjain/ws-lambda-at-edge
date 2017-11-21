@@ -8,12 +8,18 @@ an example of the corresponding semantic URL would be something like:
 `(b)` https://d123.cloudfront.net/tree
 
 There are two common ways to serve content with pretty URLs:
-* Accept request to the semantic URLs `(b)` and redirect it to the URLs accepted by the origin `(a)`
-* Rewrtie URIs at your proxy or an origin web server before the content is served.
+* Redirect from semantic URLs similar to `(b)` to the URLs similar to `(a)` accepted by the origin
+* Rewrtie simantic URLs similar to `(b)` to URLs similar to `(a)` accepted by the origin. This can be done either at the origin itself or an intermediate proxy.
 
 We will cover both of these approaches with Lambda@Edge.
 
 ### 1. Redirect response generation
+
+Let's generate redirects from the named cards ("tree", "cat", etc) like  
+https://d123.cloudfront.net/r/tree  
+
+to the actual card URL  
+https://d123.cloudfront.net/card/da8398f4
 
 #### 1.1 Create a Lambda function
 
@@ -78,6 +84,13 @@ https://d123.cloudfront.net/card/da8398f4
 The URI rewrite approach has two advantages over the redirect:
 * Faster content delivery as there is no need for an extra round-trip between the servere and the client to handle the redirect
 * The semantic URL stays in the address bar of the web browser
+
+Let's rewrite the pretty URIs ("/tree", "/cat", etc) like  
+https://d123.cloudfront.net/r/tree  
+
+to the actual card URL internally within Lambda@Edge so that it's not even seen in the viewer web browser.
+https://d123.cloudfront.net/card/da8398f4
+
 
 #### 2.1 Create/modify the Lambda function
 
