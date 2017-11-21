@@ -16,7 +16,7 @@ TBD: what will be created with by CloudFormation
 
 Security always comes first.
 
-Let's check and improve our website security by configuring HTTP to HTTPs redirect and adding a number of standard security headers to enforce HTTPS connection is always used and prevent XSS.
+Learn how to check and improve our website security by configuring HTTP to HTTPs redirect and adding a number of standard security headers to enforce HTTPS connection is always used and prevent XSS.
 
 [Lab 1 - Adding Security headers](./Lab1_Security/README.md)
 
@@ -28,7 +28,7 @@ Learn how to create a Lambda function that dynamically generates HTML content th
 
 ## Lab 3 - Simple API
 
-TBD - Overview
+Learn how you can use Lambda@Edge to implement a simple API that accepts POST requests from the viewers and modifies the web application state in a DynamoDB table.
 
 [Lab 3 - Simple API](./Lab3_SimpleAPI/README.md)
 
