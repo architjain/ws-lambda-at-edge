@@ -16,7 +16,7 @@ We will cover both of these approaches with Lambda@Edge.
 ### 1. Redirect response generation
 
 Let's generate redirects from the named cards ("tree", "cat", etc) like  
-https://d123.cloudfront.net/r/tree  
+https://d123.cloudfront.net/tree  
 
 to the actual card URL  
 https://d123.cloudfront.net/card/da8398f4
