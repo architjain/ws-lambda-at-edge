@@ -38,6 +38,21 @@ TBD
 
 TBD
 
+```
+    const redirects = {
+        '/music':    '/card/bcbd2481',
+        '/tree':     '/card/da8398f4',
+        '/food':     '/card/e51c848c',
+        '/computer': '/card/fe2f80a7',
+        '/cat':      '/card/k9b430fc',
+        '/beer':     '/card/vc7efa69',
+    };
+    if (request.uri in redirects) {
+        request.uri = redirects[request.uri];
+    }
+```
+
+
 #### 2.2 Validate in lambda console
 
 TBD
