@@ -10,7 +10,7 @@ exports.handler = (event, context, callback) => {
 
     const redirects = {
         '/r/music':    '/card/bcbd2481',
-        '/r/nature':   '/card/da8398f4',
+        '/r/tree':     '/card/da8398f4',
         '/r/food':     '/card/e51c848c',
         '/r/computer': '/card/fe2f80a7',
         '/r/cat':      '/card/k9b430fc',
