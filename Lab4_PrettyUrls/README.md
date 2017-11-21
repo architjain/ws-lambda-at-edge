@@ -23,7 +23,7 @@ Use JavaScript code from [ws-lambda-edge-redirect.js](./ws-lambda-edge-redirect.
 
 ![x](./img/01-create-function.png)
 
-#### 1.2 Validate in lambda console
+#### 1.2 Validate in Lambda console
 
 Click "Save and Test" and configure the test event. You can use the "CloudFront HTTP Redirect" event template. 
 
@@ -81,7 +81,9 @@ The URI rewrite approach has two advantages over the redirect:
 
 #### 2.1 Create/modify the Lambda function
 
-TBD
+Assuming Lab 2 has been compleeted, we already have Lambda@Edge function triggered for the origin-request event in the default cache behavior. We no need to rewrite the URI at the begging of it before any futher processing.
+
+This can be achieved with the code snippet below. Paste it at the beginning of `ws-lambda-at-edge-generate-card-page` function created in Lab 2.
 
 ```
     const redirects = {
@@ -97,12 +99,27 @@ TBD
     }
 ```
 
+![x](./img/11-modify-function.png)
 
-#### 2.2 Validate in lambda console
+#### 2.2 Validate in Lambda console
 
-TBD
+Update the test event, click "Configure test events" inside the dropdown list of test events next to the "Test" button.
 
-#### 2.3 URI rewrite now works!
+![x](./img/12-configure-test-event-1.png)
+
+Change the `uri` field value to `/tree`.
+
+![x](./img/13-configure-test-event-2.png)
+
+#### 2.3 Publish a function version
+
+Choose "Publish new version" under "Actions", specify an optional description of a function version and click "Publish".
+
+#### 2.4 Update the trigger
+
+Either in Lambda or CloudFront Console update the origin-request event of the CloudFront distribution to trigger the function version ARN obtained at the previous step.
+
+#### 2.5 URI rewrite now works!
 
 Now both URLs show exactly the same content.
 
