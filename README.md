@@ -34,7 +34,7 @@ Learn how you can use Lambda@Edge to implement a simple API that accepts POST re
 
 ## Lab 4 - Pretty URLs
 
-TBD - Overview
+Use Lambda@Edge to introduce pretty semantic URLs to your web application. Pretty URLs are easy to read and remember, they also help with search engine optimization and allow your viewers to use the descriptive links in social media.
 
 [Lab 4 - Pretty URLs](./Lab4_PrettyUrls/README.md)
 
