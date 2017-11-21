@@ -30,7 +30,7 @@ https://d123.cloudfront.net/card/da8398f4
 
 #### 1.1 Create a Lambda function
 
-Create a Lambda function in `us-east-1` region. Choose `Node.js 6.10` runtime and the IAM role named `ws-lambda-edge-read-only-<UNIQUE_ID>`, which was created by CloudFormation stack in your account, as an execution role of the function. This will allow the function to read data from the DynamoDB table and also get object from the S3 bucket.
+Create a Lambda function in `us-east-1` region. Choose `Node.js 6.10` runtime and the IAM role named `ws-lambda-at-edge-read-only-<UNIQUE_ID>`, which was created by CloudFormation stack in your account, as an execution role of the function. This will allow the function to read data from the DynamoDB table and also get object from the S3 bucket.
 
 Use JavaScript code from [ws-lambda-at-edge-generate-card-page.js](./ws-lambda-at-edge-generate-card-page.js) as a blueprint.
 
@@ -40,7 +40,9 @@ Use JavaScript code from [ws-lambda-at-edge-generate-card-page.js](./ws-lambda-a
 
 #### 1.2 Validate the function works with test-invoke in Lambda Console
 
-Click "Test" and configure the test event. Specify `/card/da8398f4` as the value of the `uri` field.
+Click "Test" and configure the test event. You can use "CloudFront Simple Remote Call" event template. 
+
+Specify `/card/da8398f4` as the value of the `uri` field.
 
 ![x](./img/03-configure-test-event.png)
 
@@ -126,7 +128,7 @@ CloudFront may have already cached the old version home page, let's purge any st
 
 ![x](./img/17-invalidate.png)
 
-#### 2.7 The generated home page is now served by CloudFront
+#### 2.7 The generated home page is now served by CloudFront!
 
 Go to the home page:  
 https://d123.cloudfront.net/  
