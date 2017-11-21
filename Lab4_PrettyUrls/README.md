@@ -136,5 +136,5 @@ Either in Lambda or CloudFront Console update the origin-request event of the Cl
 
 Now both URLs show exactly the same content.
 
-* https://d123.cloudfront.net/card/da8398f4  
 * https://d123.cloudfront.net/tree
+* https://d123.cloudfront.net/card/da8398f4  
