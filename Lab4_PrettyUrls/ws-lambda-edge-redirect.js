@@ -1,8 +1,8 @@
 'use strict';
 
 exports.handler = (event, context, callback) => {
-    console.log('Event:', JSON.stringify(event, null, 2));
-    console.log('Context:', JSON.stringify(context, null, 2));
+    console.log('Event: ', JSON.stringify(event, null, 2));
+    console.log('Context: ', JSON.stringify(context, null, 2));
     const request = event.Records[0].cf.request;
 
     // You can also store and read the redirect map

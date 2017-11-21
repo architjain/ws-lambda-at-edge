@@ -2,7 +2,7 @@
 
 const QS = require('querystring');
 const AWS = require('aws-sdk');
-const ddb = new AWS.DynamoDB({apiVersion: '2012-10-08', region: 'us-east-1'});
+const ddb = new AWS.DynamoDB.DocumentClient({apiVersion: '2012-10-08', region: 'us-east-1'});
 
 const ddbTableName = FIXME; // Copy DynamoDB table name here, for example, 'AlienCards-1201c610'
 
@@ -20,19 +20,19 @@ exports.handler = (event, context, callback) => {
         return callback(null, getResponse(
             { status: '400', body: { error: "Couldn't parse id parameter" } }));
 
-    ddb.updateItem({ 
+    ddb.update({
         TableName: ddbTableName,
         ReturnValues: "ALL_NEW",
         UpdateExpression: "SET Likes = Likes + :one",
-        ExpressionAttributeValues: { ":one": {"N": "1"} },
-        Key: { CardId: { S: params.id } }
+        ExpressionAttributeValues: { ":one": 1 },
+        Key: { CardId: params.id }
     }, (err, data) => {
         console.log('err: ' + JSON.stringify(err));
         console.log('data: ' + JSON.stringify(data));
         if (err)
             return callback(null, getResponse({ status: '500', body: err }));
         else
-            return callback(null, getResponse({ status: '200', body: flattenItem(data) }));
+            return callback(null, getResponse({ status: '200', body: data }));
     });
 };
 
@@ -46,18 +46,6 @@ function getResponse(resp) {
         }),
         body: JSON.stringify(resp.body, null, 2)
     };
-}
-
-function flattenItem(item) {
-    item = item.Attributes || item;
-    for (const field in item) {
-        if (item[field].hasOwnProperty("S")) {
-            item[field] = item[field]["S"];
-        } else if (item[field].hasOwnProperty("N")) {
-            item[field] = parseInt(item[field]["N"]);
-        }
-    }
-    return item;
 }
 
 function addSecurityHeaders(headers) {
