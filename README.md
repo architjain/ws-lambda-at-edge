@@ -46,7 +46,7 @@ TBD - Overview
 
 [Lab 6 - Origin Selection](./Lab6_OriginSelection/README.md)
 
-## Workshop Cleanup
+## Cleanup
 
 1. Delete all files from the S3 bucket `ws-lambda-at-edge-<unique_id>` created by CloudFormation stack for this workshop.
 1. Delete the CloudFormation stack named `WsLambdaAtEdgeAlienCards`.
