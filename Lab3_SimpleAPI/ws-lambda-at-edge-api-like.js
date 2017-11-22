@@ -32,7 +32,7 @@ exports.handler = (event, context, callback) => {
         if (err)
             return callback(null, getResponse({ status: '500', body: err }));
         else
-            return callback(null, getResponse({ status: '200', body: data }));
+            return callback(null, getResponse({ status: '200', body: data.Attributes }));
     });
 };
 
