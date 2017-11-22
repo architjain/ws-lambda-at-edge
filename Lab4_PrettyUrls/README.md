@@ -94,7 +94,7 @@ https://d123.cloudfront.net/card/da8398f4
 
 #### 2.1 Create/modify the Lambda function
 
-Assuming Lab 2 has been compleeted, we already have Lambda@Edge function triggered for the origin-request event in the default cache behavior. We no need to rewrite the URI at the begging of it before any futher processing.
+Assuming Lab 2 has been completed, we already have Lambda@Edge function triggered for the origin-request event in the default cache behavior. We no need to rewrite the URI at the begging of it before any futher processing.
 
 This can be achieved with the code snippet below. Paste it at the beginning of `ws-lambda-at-edge-generate-card-page` function created in Lab 2.
 
