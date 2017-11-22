@@ -82,7 +82,7 @@ https://d123.cloudfront.net/card/da8398f4
 ### 2. URI rewrite
 
 The URI rewrite approach has two advantages over the redirect:
-* Faster content delivery as there is no need for an extra round-trip between the servere and the client to handle the redirect
+* Faster content delivery as there is now need for an extra round-trip between the servere and the client to handle the redirect
 * The semantic URL stays in the address bar of the web browser
 
 Let's rewrite the pretty URIs ("/tree", "/cat", etc) like  
