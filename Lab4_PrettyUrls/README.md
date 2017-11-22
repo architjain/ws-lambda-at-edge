@@ -35,7 +35,7 @@ Click "Save and Test" and configure the test event. You can use the "CloudFront 
 
 Specify `/r/tree` as the value of the `uri` fields.
 
-![x](./img/03-configure-test-event.png)
+![x](./img/03-configure-test-object.png)
 
 Click "Test" and validate the function has returned `302` status code with the location header value equal to `/card/da8398f4`.
 
