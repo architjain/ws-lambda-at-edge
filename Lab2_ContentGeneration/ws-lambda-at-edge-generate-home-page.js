@@ -8,10 +8,9 @@ const ddbTableName = FIXME; // Copy DynamoDB table name here, for example, 'Alie
 const cfDomainName = FIXME; // Copy CloudFront domain name here, for example, 'd1dienny4yhppe.cloudfront.net';
 const pathIndxTmpl = '/templates/index.html';
 
-
 exports.handler = (event, context, callback) => {
-    console.log('Event:', JSON.stringify(event, null, 2));
-    console.log('Context:', JSON.stringify(context, null, 2));
+    console.log('Event: ', JSON.stringify(event, null, 2));
+    console.log('Context: ', JSON.stringify(context, null, 2));
     const request = event.Records[0].cf.request;
 
     // Get HTML template from the CloudFront cache
@@ -87,25 +86,13 @@ function ddbScan(params) {
                 reject(err);
             } else {
                 console.log('ddb data: ' + JSON.stringify(data, null, 2));
-                const items = data.Items.map(flattenItem)
+                const items = data.Items
                     .sort((a, b) => { return (a.Likes > b.Likes) ? -1 : 1; });
                 console.log('ddb sorted items: ' + JSON.stringify(items, null, 2));
                 resolve(items);
             }
         })
     );
-}
-
-function flattenItem(item) {
-    item = item.Item || item;
-    for (const field in item) {
-        if (item[field].hasOwnProperty("S")) {
-            item[field] = item[field]["S"];
-        } else if (item[field].hasOwnProperty("N")) {
-            item[field] = parseInt(item[field]["N"]);
-        }
-    }
-    return item;
 }
 
 function addSecurityHeaders(headers) {

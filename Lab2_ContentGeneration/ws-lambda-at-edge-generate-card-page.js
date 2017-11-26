@@ -2,26 +2,27 @@
 
 const http = require('https');
 const AWS = require('aws-sdk');
-const ddb = new AWS.DynamoDB({apiVersion: '2012-10-08', region: 'us-east-1'});
+const ddb = new AWS.DynamoDB.DocumentClient({apiVersion: '2012-10-08', region: 'us-east-1'});
 
 const ddbTableName = FIXME; // Copy DynamoDB table name here, for example, 'AlienCards-1201c610'
 const cfDomainName = FIXME; // Copy CloudFront domain name here, for example, 'd1dienny4yhppe.cloudfront.net';
 const pathCardTmpl = '/templates/card.html';
-
 
 // The generated page contains some dynamic data, so we don't want
 // it to stay in cache for long
 const cacheControlMaxAge = 3;
 
 exports.handler = (event, context, callback) => {
-    console.log('Event:', JSON.stringify(event, null, 2));
-    console.log('Context:', JSON.stringify(context, null, 2));
+    console.log('Event: ', JSON.stringify(event, null, 2));
+    console.log('Context: ', JSON.stringify(context, null, 2));
     const request = event.Records[0].cf.request;
 
     // Get Id from URI (pass through if failed to parse)
-    const m = request.uri.match(/\/([a-z0-9]+)$/i);
+    const m = request.uri.match(/^\/card\/([a-z0-9]+)$/i);
     const id = (Array.isArray(m) && m.length > 1) ? m[1] : null;
     if (!id) {
+        // Couldn't get id from URI, don't generate any response
+        // in this case, let the request go to the origin
         return callback(null, request);
     }
 
@@ -29,7 +30,7 @@ exports.handler = (event, context, callback) => {
     // and data from the DynamoDB table
     Promise.all([
         httpGet({ hostname: cfDomainName, path: pathCardTmpl }),
-        ddbGet({ TableName: ddbTableName, Key: { CardId: { S: id } } }),
+        ddbGet({ TableName: ddbTableName, Key: { CardId: id } }),
     ])
     .then(responses => {
         const tmpl = responses[0];
@@ -91,28 +92,19 @@ function httpGet(params) {
 function ddbGet(params) {
     console.log('DDB get params: ' + JSON.stringify(params, null, 2));
     return new Promise((resolve, reject) =>
-        ddb.getItem(params, (err, data) => {
+        ddb.get(params, (err, data) => {
             if (err) {
-                console.log('ddb err:' + JSON.stringify(err, null, 2));
+                console.log('ddb err: ' + JSON.stringify(err, null, 2));
                 reject(err);
             } else {
-                console.log('ddb data:' + JSON.stringify(data, null, 2));
-                resolve(flattenItem(data));
+                console.log('ddb data: ' + JSON.stringify(data, null, 2));
+                if (data.Item)
+                    resolve(data.Item);
+                else
+                    reject('No item found: ' + JSON.stringify(params));
             }
         })
     );
-}
-
-function flattenItem(item) {
-    item = item.Item || item;
-    for (const field in item) {
-        if (item[field].hasOwnProperty("S")) {
-            item[field] = item[field]["S"];
-        } else if (item[field].hasOwnProperty("N")) {
-            item[field] = parseInt(item[field]["N"]);
-        }
-    }
-    return item;
 }
 
 function addSecurityHeaders(headers) {
