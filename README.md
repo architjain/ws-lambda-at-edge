@@ -42,7 +42,7 @@ Use Lambda@Edge to introduce pretty semantic URLs to your web application. Prett
 
 ## Lab 5 - Customization
 
-TBD - Overview
+Use Lambda@Edge to serve customized content by updating URI based upon request.
 
 [Lab 5 - Customization](./Lab5_Customization/README.md)
 

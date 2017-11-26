@@ -21,7 +21,7 @@ Use JavaScript code from [ws-lambda-at-edge-select-nearest-origin.js](./ws-lambd
 
 #### 2 Validate the function works with test-invoke in Lambda Console
 
-Click "Test" and configure the test event. You can use "CloudFront Simple Remote Call" event template. Use sample test-event from [ws-lambda-at-edge-select-nearest-origin.js](./ws-lambda-at-edge-select-nearest-origin.js) as an example.
+Click "Test" and configure the test event. You can use "CloudFront Simple Remote Call" event template. Use sample test-event from [ws-lambda-at-edge-select-nearest-origin-test-input.json](./ws-lambda-at-edge-select-nearest-origin-test-input.json) as an example.
 
 ![x](./img/pic-2-configure-test-event.png)
 
