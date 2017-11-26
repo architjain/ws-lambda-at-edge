@@ -39,23 +39,12 @@ Choose "Publish new version" under "Actions", specify an optional description of
 
 ![x](./img/pic-4-publish-function-version2.png)
 
-#### 4 Create a new origin
 
-Go to Services -> CloudFront. Select the distribution which was created by CloudFormation stack in your account. Click "Distribution Settings" -> Origins -> "Create Origin".  Choose the following settings:
-* Origin Domain Name: amazonaws.com
-* Origin Path: /
-* Origin Protocol Policy: Match Viewer
-And then click "Create"
-
-![x](./img/pic-5-create-new-origin.png)
-
-![x](./img/pic-5-create-new-origin2.png)
-
-#### 5 Create cache behavior for the images 
+#### 4 Create cache behavior for the images 
 
 Under the "Behaviors" tab, click "Create Behavior". Choose the following settings:
 * Path Pattern: /card/*.jpg
-* Origin: Custom-amazonaws.com
+* Origin: S3
 * Cache Based on Selected Request Headers: Whitelist
 * Whitelist Headers: Type in "CloudFront-Viewer-Country" and click "Add Custom >>"
 * Query String Forwarding and Caching: "Forward all, cache based on all"
@@ -72,19 +61,17 @@ And then click "Create"
 
 ![x](./img/pic-6-create-new-cachebehavior5.png)
 
-![x](./img/pic-6-create-new-cachebehavior6.png)
-
-#### 7 Wait for the change to propagate
+#### 5 Wait for the change to propagate
 
 After any modification of a CloudFront distribution, the change should be propagated globally to all CloudFront edge locations. The propagation status is indicated as "In Progress" and "Deployed" when it's complete. Usually ~30-60seconds is enough for the change to take effect, even though the status may be still "In Progress". To be 100% certain though you can wait until the change is fully deployed.
 
-#### 8 Invalidate CloudFront cache
+#### 6 Invalidate CloudFront cache
 
 CloudFront may have already cached the old version home page, let's purge any stale objects from the cache. Submit a wildcard invalidation '/*'.
 
 ![x](./img/pic-7-invalidate.png)
 
-#### 9 The generated card details page is now fetching images from the nearest origin.
+#### 7 The generated card details page is now fetching images from the nearest origin.
 
 Go to the card details page (with country override in url parameter):  
 https://d123.cloudfront.net/card/vc7efa69?country=UK  
