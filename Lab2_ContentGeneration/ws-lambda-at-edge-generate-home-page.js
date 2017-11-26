@@ -4,13 +4,14 @@ const http = require('https');
 const AWS = require('aws-sdk');
 const ddb = new AWS.DynamoDB.DocumentClient({apiVersion: '2012-10-08', region: 'us-east-1'});
 
-const ddbTableName = FIXME; // Copy DynamoDB table name here, for example, 'AlienCards-1201c610'
-const cfDomainName = FIXME; // Copy CloudFront domain name here, for example, 'd1dienny4yhppe.cloudfront.net';
+const ddbTableName = 'AlienCards-d9ead4d0';
+const cfDomainName = 'dtteyj05j0tpc.cloudfront.net';
 const pathIndxTmpl = '/templates/index.html';
 
+
 exports.handler = (event, context, callback) => {
-    console.log('Event: ', JSON.stringify(event, null, 2));
-    console.log('Context: ', JSON.stringify(context, null, 2));
+    console.log('Event:', JSON.stringify(event, null, 2));
+    console.log('Context:', JSON.stringify(context, null, 2));
     const request = event.Records[0].cf.request;
 
     // Get HTML template from the CloudFront cache
@@ -29,6 +30,7 @@ exports.handler = (event, context, callback) => {
             html = html
                 .replace(new RegExp(`{{id${n}}}`, "g"), data[i].CardId)
                 .replace(new RegExp(`{{desc${n}}}`, "g"), data[i].Description)
+                .replace(/{{querystring}}/g, request.querystring)
                 .replace(new RegExp(`{{likes${n}}}`, "g"), data[i].Likes);
         }
 
@@ -85,13 +87,25 @@ function ddbScan(params) {
                 reject(err);
             } else {
                 console.log('ddb data: ' + JSON.stringify(data, null, 2));
-                const items = data.Items
+                const items = data.Items.map(flattenItem)
                     .sort((a, b) => { return (a.Likes > b.Likes) ? -1 : 1; });
                 console.log('ddb sorted items: ' + JSON.stringify(items, null, 2));
                 resolve(items);
             }
         })
     );
+}
+
+function flattenItem(item) {
+    item = item.Item || item;
+    for (const field in item) {
+        if (item[field].hasOwnProperty("S")) {
+            item[field] = item[field]["S"];
+        } else if (item[field].hasOwnProperty("N")) {
+            item[field] = parseInt(item[field]["N"]);
+        }
+    }
+    return item;
 }
 
 function addSecurityHeaders(headers) {
