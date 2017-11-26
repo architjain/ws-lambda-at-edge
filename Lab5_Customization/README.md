@@ -3,16 +3,16 @@
 We can serve different content from S3 bucket by changing the path prefix
 depending on CloudFront headers like:
 
-  CloudFront-Is-Mobile-Viewer
-  CloudFront-Is-Desktop-Viewer
+*  CloudFront-Is-Mobile-Viewer
+*  CloudFront-Is-Desktop-Viewer
   etc
 
 For example:
-  GET /css/style.css
+*  GET /css/style.css
 
 can be rewritten to
-  GET /css/style.css       # for desktop viewers
-  GET /css/mobile/style.css       # for mobile viewers
+*   GET /css/style.css       # for desktop viewers
+*   GET /css/mobile/style.css       # for mobile viewers
 
 
 In this lab, you will learn how to create a Lambda function that customizes the content based upon different paramter in customer request.
