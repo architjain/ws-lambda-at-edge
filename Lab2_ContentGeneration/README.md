@@ -114,6 +114,7 @@ Go to CloudFront Console and find the distribution created for this workshop. Un
 * Viewer Protocol Policy: "Redirect HTTP to HTTPS"
 * Object Caching: Customize
 * Min, Max and Default TTL: 0, 5, 5 respectively (this would cache the generated home page for 5 seconds max)
+* Query String Forwarding and Caching: "Forward all, cache based on all"
 * Lambda Function Associations: Origin Request = <lambda version ARN from the previous step>
   
 ![x](./img/16-create-cb-and-trigger.png)
