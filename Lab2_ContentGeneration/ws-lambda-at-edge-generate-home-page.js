@@ -4,8 +4,8 @@ const http = require('https');
 const AWS = require('aws-sdk');
 const ddb = new AWS.DynamoDB.DocumentClient({apiVersion: '2012-10-08', region: 'us-east-1'});
 
-const ddbTableName = 'AlienCards-d9ead4d0';
-const cfDomainName = 'dtteyj05j0tpc.cloudfront.net';
+const ddbTableName = FIXME; // Copy DynamoDB table name here, for example, 'AlienCards-1201c610'
+const cfDomainName = FIXME; // Copy CloudFront domain name here, for example, 'd1dienny4yhppe.cloudfront.net';
 const pathIndxTmpl = '/templates/index.html';
 
 

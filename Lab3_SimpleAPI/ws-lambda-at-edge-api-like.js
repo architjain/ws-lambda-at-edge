@@ -4,7 +4,7 @@ const QS = require('querystring');
 const AWS = require('aws-sdk');
 const ddb = new AWS.DynamoDB({apiVersion: '2012-10-08', region: 'us-east-1'});
 
-const ddbTableName = 'AlienCards-d9ead4d0';
+const ddbTableName = FIXME; // Copy DynamoDB table name here, for example, 'AlienCards-1201c610'
 
 exports.handler = (event, context, callback) => {
     console.log('Event:', JSON.stringify(event, null, 2));
