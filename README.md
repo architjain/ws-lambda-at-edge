@@ -48,7 +48,7 @@ TBD - Overview
 
 ## Lab 6 - Origin Selection
 
-TBD - Overview
+Learn how you can use Lambda@Edge to select an origin based on the request. You can select an origin near to your customer or select an origin to serve customized content.
 
 [Lab 6 - Origin Selection](./Lab6_OriginSelection/README.md)
 
