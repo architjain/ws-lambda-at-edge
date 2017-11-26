@@ -2,8 +2,8 @@
 const querystring = require('querystring');
 
 const regionToBucketMapping  =  {
-    'us-east-1' : 'ws-lambda-at-edge-ad6f8d30',
-    'eu-central-1' : 'ws-lambda-at-edge-ad6f8d30-eu-central-1'
+    'us-east-1' : FIXME // Update S3 Bucket created by Cloudformation in US here like 'ws-lambda-at-edge-ad6f8d30'
+    'eu-central-1' : FIXME // Update S3 Bucket created by Cloudformation in EU here like 'ws-lambda-at-edge-ad6f8d30-eu-central-1'
 };
 
 exports.handler = (event, context, callback) => {
