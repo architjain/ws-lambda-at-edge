@@ -35,13 +35,13 @@ Need more detailed instructions? Proceed to
 
 Security always comes first.
 
-Learn how to check and improve our website security by configuring HTTP to HTTPs redirect and adding standard security headers to enforce HTTPS connection is always used by the client and prevent XSS.
+Learn how to check and improve website security by configuring HTTP to HTTPs redirect and adding standard security headers to enforce HTTPS connection is always used by the client and prevent XSS.
 
 [Lab 1 - Security headers](./Lab1_Security/README.md)
 
 ## Lab 2 - Content Generation
 
-Learn how to create a Lambda function that dynamically generates HTML content that can be cached by CloudFront and returned back to your viewers.
+Learn how to create a Lambda function that dynamically generates HTML content which can be cached by CloudFront and returned back to your viewers.
 
 [Lab 2 - Content generation](./Lab2_ContentGeneration/README.md)
 
