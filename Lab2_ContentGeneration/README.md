@@ -64,13 +64,13 @@ Take a moment to familiarize yourself with the function code and what it does. Y
 
 #### 1.2 Validate the function works with test-invoke in Lambda Console
 
-Click `Test` and configure the test event. You can use "CloudFront Simple Remote Call" event template. 
+Click `Save and Test` and configure the test event. You can use "CloudFront Simple Remote Call" event template. 
 
 Specify `/card/da8398f4` as the value of the `uri` field.
 
 ![x](./img/03-configure-test-event.png)
 
-Execute the test-invoke and validate the function has returned `200` status code and the `body` field contains a meaningful HTML document.
+Click `Test` and validate the function has returned `200` status code and the `body` field contains a meaningful HTML document.
 
 ![x](./img/04-test-invoke-successful.png)
 
@@ -129,13 +129,13 @@ Use JavaScript code from [ws-lambda-at-edge-generate-home-page.js](./ws-lambda-a
 
 #### 2.2 Validate the function works with test-invoke in Lambda Console
 
-Click `Test` and configure the test event. You can use "CloudFront Simple Remote Call" event template.
+Click `Save and Test` and configure the test event. You can use "CloudFront Simple Remote Call" event template.
 
 Specify `/index.html` as the value of the `uri` field.
 
 ![x](./img/13-configure-test-event.png)
 
-Execute the test-invoke and validate the function has returned `200` status code and the `body` field contains a meaningful HTML document.
+Click `Test` and validate the function has returned `200` status code and the `body` field contains a meaningful HTML document.
 
 ![x](./img/14-test-invoke-successful.png)
 
@@ -145,7 +145,7 @@ Choose `Publish new version` under `Actions`, specify an optional description of
 
 ![x](./img/15-version-published.png)
 
-#### 2.4 Create cache behavior for the home page
+#### 2.4 Create a cache behavior for the home page
 
 Go to CloudFront Console and find the distribution created for this workshop.
 
