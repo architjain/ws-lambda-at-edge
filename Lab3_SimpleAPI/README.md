@@ -12,7 +12,7 @@ POST /api/like?id=<card_id>
 ## Steps
 
 [1. Create a Lambda function](#1-create-a-lambda-function)  
-[2. Validate the function works with test-invoke in Lambda Console](#2-validate-the-function-works-with-test-invoke-in-lambda-console)  
+[2. Validate the function works in Lambda Console](#2-validate-the-function-works-in-lambda-console)  
 [3. Publish a function version](#3-publish-a-function-version)  
 [4. Create cache behavior for the API URI](#4-create-cache-behavior-for-the-api-uri)  
 [5. Invalidate CloudFront cache](#5-invalidate-cloudfront-cache)  
@@ -35,7 +35,7 @@ Take a moment to familiarize yourself with the function code and what it does. Y
 
 ![x](./img/02-function-created.png)
 
-### 2. Validate the function works with test-invoke in Lambda Console
+### 2. Validate the function works in Lambda Console
 
 Click `Save and Test` and configure the test event. You can use the "CloudFront Simple Remote Call" event template. 
 
