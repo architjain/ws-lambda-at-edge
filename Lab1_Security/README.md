@@ -79,7 +79,7 @@ While we are at the Lambda Console, choose `Add trigger` under `Triggers`, you w
 * In the `Distribution ID` field, find the CloudFront distribution created for this workshop.  
 * Choose the default cache behavior, that is currently the only behavior in the distribution that matches all URI paths with the `*` wildcard.  
 * Choose `Origin Response` event type to trigger the function. We want to add the security headers every time we receive a response from the origin so that the modified response would be cached together with the added security headers in the CloudFront cache.
-* Confirm a global replication of the function by choosing `Enable trigger and replicate`
+* Confirm the global replication of the function by clicking `Enable trigger and replicate`
 
 ![x](./img/add-trigger2.png)
 
