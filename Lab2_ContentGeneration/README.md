@@ -25,7 +25,7 @@ We will generate the content in Lambda functions triggered by origin-request eve
 
 [1. Content generation for the card details page](#1-content-generation-for-the-card-details-page)  
 [1.1 Create a Lambda function](#11-create-a-lambda-function)  
-[1.2 Validate the function works with test-invoke in Lambda Console](#12-validate-the-function-works-with-test-invoke-in-lambda-console)  
+[1.2 Validate the function works in Lambda Console](#12-validate-the-function-works-in-lambda-console)  
 [1.3 Publish a function version](#13-publish-a-function-version)  
 [1.4 Create the trigger](#14-create-the-trigger)  
 [1.5 Wait for the change to propagate](#15-wait-for-the-change-to-propagate)  
@@ -33,7 +33,7 @@ We will generate the content in Lambda functions triggered by origin-request eve
 
 [2. Content generation for the home page](#2-content-generation-for-the-home-page)  
 [2.1 Create a lambda function](#21-create-a-lambda-function)  
-[2.2 Validate the function works with test-invoke in Lambda Console](#22-validate-the-function-works-with-test-invoke-in-lambda-console)  
+[2.2 Validate the function works in Lambda Console](#22-validate-the-function-works-in-lambda-console)  
 [2.3 Publish a function version](#23-publish-a-function-version)  
 [2.4 Create a cache behavior for the home page](#24-create-a-cache-behavior-for-the-home-page)  
 [2.5 Wait for the change to propagate](#25-wait-for-the-change-to-propagate)  
@@ -62,7 +62,7 @@ Take a moment to familiarize yourself with the function code and what it does. Y
 
 ![x](./img/02-function-created.png)
 
-#### 1.2 Validate the function works with test-invoke in Lambda Console
+#### 1.2 Validate the function works in Lambda Console
 
 Click `Save and Test` and configure the test event. You can use "CloudFront Simple Remote Call" event template. 
 
@@ -127,7 +127,7 @@ Use JavaScript code from [ws-lambda-at-edge-generate-home-page.js](./ws-lambda-a
 
 ![x](./img/12-function-created.png)
 
-#### 2.2 Validate the function works with test-invoke in Lambda Console
+#### 2.2 Validate the function works in Lambda Console
 
 Click `Save and Test` and configure the test event. You can use "CloudFront Simple Remote Call" event template.
 
