@@ -18,7 +18,7 @@ Here is how the website will look like at the end of the workshop with all labs 
 
 ## Lab 0 - Launch the stack
 
-To start a workshop, launch the CloudFormation stack to bootstrap the resources in the us-east-1 (N.Virginia) region.
+To start the workshop, launch the CloudFormation stack to bootstrap the resources in the us-east-1 (N.Virginia) region.
 
 Click the launch stack button below to kick it off.
 
