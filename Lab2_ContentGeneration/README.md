@@ -50,7 +50,7 @@ https://d123.cloudfront.net/card/da8398f4
 Go to Lambda Console, select "US East (N.Virginia)" region in the top left corner. Go to `Functions`, click `Create function` and click `Author from scratch`.
 
 In the `Basic information` window, select:
-* `Name`: ws-lambda-at-edge-generate-card-page
+* `Name`: `ws-lambda-at-edge-generate-card-page`
 * `Role`: `Choose an existing role`
 * `Existing role`: `ws-lambda-at-edge-read-only-<UNIQUE_ID>` (this role allows the function to read data from the DynamoDB table and get objects from the S3 buckets)
 
@@ -118,7 +118,10 @@ https://d123.cloudfront.net/
 
 Create a Lambda function similar to the previous one.
 
-Name it `ws-lambda-at-edge-generate-home-page`.
+In the `Basic information` window, select:
+* `Name`: `ws-lambda-at-edge-generate-home-page`
+* `Role`: `Choose an existing role`
+* `Existing role`: `ws-lambda-at-edge-read-only-<UNIQUE_ID>` (this role allows the function to read data from the DynamoDB table and get objects from the S3 buckets)
 
 Use JavaScript code from [ws-lambda-at-edge-generate-home-page.js](./ws-lambda-at-edge-generate-home-page.js) as a blueprint. Take a moment to familiarize yourself with the function code and what it does.
 
