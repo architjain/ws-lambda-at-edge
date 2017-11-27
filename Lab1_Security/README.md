@@ -62,7 +62,7 @@ Validate that the security headers are now seen in the the execution result of t
 
 Before a Lambda function can be associated with and triggered by a CloudFront distribution, you need to "publish" it to get a function version ARN. This "freezes" the function code and configuration so that you can further modify the function while CloudFront still uses the immutable function version.
 
-Choose "Publish new version" under "Actions", specify an optional description of a function version and click "Publish".
+Choose `Publish new version` under `Actions`, specify an optional description of a function version and click `Publish`.
 
 Now you have a published function version ARN.
 
@@ -70,13 +70,13 @@ Now you have a published function version ARN.
 
 ### 5. Create the trigger
 
-The next step is to configure a CloudFront distribution to trigger the Lambda function execution on one of the four event types. This can be done in both Lambda or CloudFront Console.
+The next step is to configure a CloudFront distribution to trigger the Lambda function execution on one of the four event types. This can be done in both Lambda or CloudFront Consoles.
 
-While we are at the Lambda Console, choose "Add trigger" under "Triggers", you will be presented with an "Add trigger" dialog:
-* In the "Distribution ID" field, find the CloudFront distribution created for this workshop.  
+While we are at the Lambda Console, choose `Add trigger` under `Triggers`, you will be presented with an `Add trigger` dialog:
+* In the `Distribution ID` field, find the CloudFront distribution created for this workshop.  
 * Choose the default cache behavior, that is currently the only behavior in the distribution that matches all URI paths with the `*` wildcard.  
-* Choose "Origin Response" event type to trigger the function. We want to add the security headers every time we receive a response from the origin so that the modified response would be cached together with the added security headers in the CloudFront cache.
-* Confirm a global replication of the function by choosing "Enable trigger and replicate"
+* Choose `Origin Response` event type to trigger the function. We want to add the security headers every time we receive a response from the origin so that the modified response would be cached together with the added security headers in the CloudFront cache.
+* Confirm a global replication of the function by choosing `Enable trigger and replicate`
 
 ![x](./img/add-trigger2.png)
 
@@ -88,15 +88,15 @@ After the trigger has been created, you will see it in the list of triggers of t
 
 Besides adding the security headers to all HTTP responses, it is also recommended to redirect HTTP traffic to the HTTPS URLs with the same URI location. This can be easily enabled in the CloudFront Console.
 
-Open CloudFront Console and find the distribution created for this workshop. Navigate to the "Behaviors" tab and open the default cache behavior:
-* Set "Viewer Protocol Policy" to "Redirect HTTP to HTTPs"
-* You can also see the Lambda function ARN here configured for "Origin Response" event type in the previous step. No action needed. This is just another way to configure the trigger association in CloudFront Console.
+Open CloudFront Console and find the distribution created for this workshop. Navigate to the `Behaviors` tab and open the default cache behavior:
+* Set `Viewer Protocol Policy` to `Redirect HTTP to HTTPs`
+* You can also see the Lambda function ARN here configured for `Origin Response` event type in the previous step. No action needed. This is just another way to configure the trigger association in CloudFront Console.
 
 ![x](./img/cb-redirect-associated.png)
 
 ### 7. Wait for the change to propagate
 
-After any modification of a CloudFront distribution, the change should be propagated globally to all CloudFront edge locations. The propagation status is indicated as "In Progress" and "Deployed" when it's complete. Usually ~30-60seconds is enough for the change to take effect, even though the status may be still "In Progress". To be 100% certain though you can wait until the change is fully deployed.
+After any modification of a CloudFront distribution, the change propagates globally to all CloudFront edge locations. The propagation status is indicated as `In Progress` and `Deployed` when it's complete. Usually ~30-60seconds is enough for the change to take effect, even though the status may be still `In Progress`. To be 100% certain though you can wait until the change is fully deployed, but it's not needed for the purpose of the workshop.
 
 ### 8. Invalidate CloudFront cache
 
@@ -106,17 +106,25 @@ In order to purge any objects that may have been cached without the security hea
 
 ### 9. Validate the security headers are now seen in the HTTP responses
 
-You can validate that the security headers are now being added to all responses to your CloudFront distribution. You can use browser developer tools or a command line.
+You can validate that the security headers are now being added to all responses to your CloudFront distribution. You can use browser developer tools or a command line. This step can be skipped.
 
 ```
 curl --head https://d123.cloudfront.net
+HTTP/1.1 200 OK
+... <more headers> ...
+Content-Security-Policy: default-src 'self'
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-XSS-Protection: 1; mode=block
+... <more headers> ...
 ```
 
 ### 10. Rescan the website for security
 
-Re-scan the distribution domain name with https://observatory.mozilla.org/ similar to step 1.
+Rescan the distribution domain name with https://observatory.mozilla.org/ similar to step 1.
 
-Now you have 100/100 score! :)
+Congratulations, now you have 100/100 score! :)
 
 ![x](./img/security-good.png)
 
