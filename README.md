@@ -4,15 +4,29 @@
 
 In this workshop you will learn how you can use Lambda@Edge to extend functionality of your web-application or a website.
 
+Backstory: Aliens have arrived. Humanity cannot communicate with them because we do not speak a common language. However, the aliens are curious and willing to learn the language by looking at beautiful images with short text descriptions. Let's build a website to help the aliens learn our language using simple learning cards!
+
+The workshop will demonstrate the usage of the following AWS services:
+* **Amazon S3**: the website's static files will be stored in an S3 bucket
+* **Amazon DynamoDB**: the dynamic data will be stored in a DynamoDB table
+* **Amazon CloudFront**: the fast and secure content delivery will performed by a CloudFront distribution
+* **AWS Lambda@Edge**: the dynamic content generation and content customization will be driven by Lambda@Edge functions
+
+TBD: link to starting point
+
+TBD: link to the end result
+
+## Lab 0 - Launch the stack
+
+To start a workshop, launch the CloudFormation stack to bootstrap the resources in the us-east-1 (N.Virginia) region.
+
+Click the launch stack button below to kick it off.
+
 Region | Button
 ------------ | -------------
 us-east-1 | [![Launch stack in us-east-1](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=WsLambdaAtEdgeAlienCards&templateURL=https://s3.amazonaws.com/ws-lambda-at-edge/bootstrap/cfn-template.json)
 
-## Lab 0 - Launch the stack
-
-TBD
-
-[Lab 0 - Launch the stack](./Lab0_LaunchTheStack/README.md)
+[Lab 0 - Launch the stack (steps with screenshots)](./Lab0_LaunchTheStack/README.md)
 
 ## Lab 1 - Security
 
@@ -48,7 +62,7 @@ TBD - Overview
 
 ## Lab 6 - Origin Selection
 
-TBD - Overview
+Learn how you can use Lambda@Edge to select an origin based on the request. You can select an origin near to your customer or select an origin to serve customized content.
 
 [Lab 6 - Origin Selection](./Lab6_OriginSelection/README.md)
 
