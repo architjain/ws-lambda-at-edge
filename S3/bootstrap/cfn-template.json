@@ -282,7 +282,7 @@
                         },
                         "MinTTL": 0,
                         "MaxTTL": 600,
-                        "DefaultTTL": 600
+                        "DefaultTTL": 60
                     },
                     "ViewerCertificate": {
                         "CloudFrontDefaultCertificate": true
@@ -290,7 +290,18 @@
                     "HttpVersion": "http2",
                     "PriceClass": "PriceClass_All",
                     "IPV6Enabled": true,
-                    "Enabled": true         
+                    "Enabled": true,
+                    "CustomErrorResponses": [
+                        { "ErrorCachingMinTTL" : 5, "ErrorCode" : 400 },
+                        { "ErrorCachingMinTTL" : 5, "ErrorCode" : 403 },
+                        { "ErrorCachingMinTTL" : 5, "ErrorCode" : 404 },
+                        { "ErrorCachingMinTTL" : 5, "ErrorCode" : 405 },
+                        { "ErrorCachingMinTTL" : 5, "ErrorCode" : 500 },
+                        { "ErrorCachingMinTTL" : 5, "ErrorCode" : 501 },
+                        { "ErrorCachingMinTTL" : 5, "ErrorCode" : 502 },
+                        { "ErrorCachingMinTTL" : 5, "ErrorCode" : 503 },
+                        { "ErrorCachingMinTTL" : 5, "ErrorCode" : 504 }
+                    ]
                 }
             }
         }
