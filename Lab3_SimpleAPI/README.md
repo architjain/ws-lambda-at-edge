@@ -63,6 +63,7 @@ Go to CloudFront Console and find the distribution created for this workshop.
 Under the `Behaviors` tab, click `Create Behavior`. Choose the following settings:
 * `Path Pattern`: `/api/like`
 * `Viewer Protocol Policy`: `Redirect HTTP to HTTPS`
+* `Allowed HTTP Methods`: `GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE` (so that it includes `POST`)
 * `Query String Forwarding and Caching`: `Forward all, cache based on all`
 * `Lambda Function Associations`: `Origin Request` = `<lambda version ARN from the previous step>`
   
