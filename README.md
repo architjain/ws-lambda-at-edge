@@ -16,7 +16,7 @@ Here is how the website looks like at the begging of the workshop: TBD
 
 Here is how the website will look like at the end of the workshop with all labs completed:  TBD
 
-## Lab 0 - Launch the stack
+## Lab 0 - Launch the Stack
 
 To start the workshop, launch the CloudFormation stack to bootstrap the resources in the us-east-1 (N.Virginia) region.
 
@@ -36,7 +36,7 @@ Learn how to check and improve our website security by configuring HTTP to HTTPs
 
 [Lab 1 - Adding Security headers](./Lab1_Security/README.md)
 
-## Lab 2 - Content generation
+## Lab 2 - Content Generation
 
 Learn how to create a Lambda function that dynamically generates HTML content that can be cached by CloudFront and returned back to your viewers.
 
