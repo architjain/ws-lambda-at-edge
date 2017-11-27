@@ -12,9 +12,9 @@ The workshop will demonstrate the usage of the following AWS services:
 * **Amazon CloudFront**: the fast and secure content delivery will performed by a CloudFront distribution
 * **AWS Lambda@Edge**: the dynamic content generation and content customization will be driven by Lambda@Edge functions
 
-TBD: link to starting point
+Here is how the website looks like at the begging of the workshop: TBD
 
-TBD: link to the end result
+Here is how the website will look like at the end of the workshop with all labs completed:  TBD
 
 ## Lab 0 - Launch the stack
 
