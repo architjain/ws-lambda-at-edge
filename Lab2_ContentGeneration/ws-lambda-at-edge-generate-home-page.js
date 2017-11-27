@@ -29,6 +29,7 @@ exports.handler = (event, context, callback) => {
             html = html
                 .replace(new RegExp(`{{id${n}}}`, "g"), data[i].CardId)
                 .replace(new RegExp(`{{desc${n}}}`, "g"), data[i].Description)
+                .replace(/{{querystring}}/g, request.querystring)
                 .replace(new RegExp(`{{likes${n}}}`, "g"), data[i].Likes);
         }
 

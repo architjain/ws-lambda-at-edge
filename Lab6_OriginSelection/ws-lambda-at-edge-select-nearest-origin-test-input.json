@@ -1,0 +1,47 @@
+{
+  "Records": [
+    {
+      "cf": {
+        "config": {
+          "distributionId": "DISTRIBUTIONID"
+        }, 
+        "request": {
+          "method": "GET", 
+          "clientIp": "72.21.198.70", 
+          "origin": {
+            "custom": {
+              "customHeaders": {}, 
+              "readTimeout": 30, 
+              "port": 80, 
+              "keepaliveTimeout": 5, 
+              "protocol": "http", 
+              "path": "", 
+              "sslProtocols": [
+                "TLSv1", 
+                "TLSv1.1", 
+                "TLSv1.2"
+              ], 
+              "domainName": "amazonaws.com"
+            }
+          }, 
+          "querystring": "country=IE", 
+          "headers": {
+            "host": [
+              {
+                "key": "Host", 
+                "value": "amazonaws.com"
+              }
+            ], 
+            "cloudfront-viewer-country": [
+              {
+                "key": "CloudFront-Viewer-Country", 
+                "value": "IE"
+              }
+            ]
+          }, 
+          "uri": "/card/960w/da8398f4.jpg"
+        }
+      }
+    }
+  ]
+}

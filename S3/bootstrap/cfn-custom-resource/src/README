@@ -1,0 +1,2 @@
+To create a lambda create a zip bundle of the files in directly : 
+    zip -j S3/bootstrap/cfn-custom-resource/lambda-package.zip S3/bootstrap/cfn-custom-resource/src/*
