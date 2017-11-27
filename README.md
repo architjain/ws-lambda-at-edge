@@ -4,7 +4,7 @@
 
 In this workshop you will learn how you can use Lambda@Edge to extend functionality of your web-application or a website.
 
-Backstory: Aliens have arrived. Humanity cannot communicate with them because we do not speak a common language. However, the aliens are curious and willing to learn the language by looking at beautiful images with short text descriptions. Let's build a website to help the aliens learn our language using simple learning cards!
+**Backstory**: Aliens have arrived. Humanity cannot communicate with them because we do not speak a common language. However, the aliens are curious and willing to learn the language by looking at beautiful images with short text descriptions. Let's build a website to help the aliens learn our language using simple learning cards!
 
 The workshop will demonstrate the usage of the following AWS services:
 * **Amazon S3**: the website's static files will be stored in an S3 bucket
