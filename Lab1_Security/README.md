@@ -4,6 +4,19 @@ Security always comes first.
 
 Let's check and improve our website security by configuring HTTP to HTTPs redirect and adding a number of standard security headers to enforce HTTPS connection is always used and prevent XSS.
 
+## Steps
+
+[1. Scan the website for security vulnerabilities](#1-scan-the-website-for-security-vulnerabilities)  
+[2. Create a Lambda function](#2-create-a-lambda-function)  
+[3. Validate the function works with test-invoke in Lambda Console](#3-validate-the-function-works-with-test-invoke-in-lambda-console)  
+[4. Publish a function version](#4-publish-a-function-version)  
+[5. Create the trigger](#5-create-the-trigger)  
+[6. Configure HTTP to HTTPs redirect](#6-configure-http-to-https-redirect)  
+[7. Wait for the change to propagate](#7-wait-for-the-change-to-propagate)  
+[8. Invalidate CloudFront cache](#8-invalidate-cloudfront-cache)  
+[9. Validate the security headers are now seen in the HTTP responses](#9-validate-the-security-headers-are-now-seen-in-the-http-responses)  
+[10. Rescan the website for security](#10-rescan-the-website-for-security)  
+
 ### 1. Scan the website for security vulnerabilities
 
 Go to https://observatory.mozilla.org/ and scan the CloudFront distribution domain name created for you by the CloudFormation stack, `d123.cloudfront.net`.
@@ -45,7 +58,7 @@ Now you have a published function version ARN.
 
 ![x](./img/publish.png)
 
-### 5. Create a trigger
+### 5. Create the trigger
 
 The next step is to configure a CloudFront distribution to trigger the Lambda function execution on one of the four event types. This can be done in both Lambda or CloudFront Console.
 
@@ -61,7 +74,7 @@ After the trigger has been created, you will see it in the list of triggers of t
 
 ![x](./img/add-trigger3.png)
 
-### 6. Configure HTTP to HTTPs redirect.
+### 6. Configure HTTP to HTTPs redirect
 
 Besides adding the security headers to all HTTP responses, it is also recommended to redirect HTTP traffic to the HTTPS URLs with the same URI location. This can be easily enabled in the CloudFront Console.
 
@@ -89,7 +102,7 @@ You can validate that the security headers are now being added to all responses 
 curl --head https://d123.cloudfront.net
 ```
 
-### 10. ReScan the website for security
+### 10. Rescan the website for security
 
 Re-scan the distribution domain name with https://observatory.mozilla.org/ similar to step 1.
 
