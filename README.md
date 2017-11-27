@@ -4,27 +4,44 @@
 
 In this workshop you will learn how you can use Lambda@Edge to extend functionality of your web-application or a website.
 
+**Backstory**: Aliens have arrived. Humanity cannot communicate with them because we do not speak a common language. However, the aliens are curious and willing to learn the language by looking at beautiful images with short text descriptions. Let's build a website to help the aliens learn our language using simple learning cards!
+
+The workshop will demonstrate the usage of the following AWS services:
+* **Amazon S3**: the website's static files will be stored in an S3 bucket
+* **Amazon DynamoDB**: the dynamic data will be stored in a DynamoDB table
+* **Amazon CloudFront**: the fast and secure content delivery will performed by a CloudFront distribution
+* **AWS Lambda@Edge**: the dynamic content generation and content customization will be driven by Lambda@Edge functions
+
+Here is how the website looks like at the begging of the workshop:  
+https://d3c0w2j5uywzfw.cloudfront.net
+
+Here is how the website will look like at the end of the workshop with all labs completed:  
+TBD
+
+## Lab 0 - Launch the Stack
+
+To start the workshop, launch the CloudFormation stack to bootstrap the resources in the us-east-1 (N.Virginia) region.
+
+Click the launch stack button below to kick it off, accept all default values and wait for CloudFormation to complete the creation of the stack.
+
 Region | Button
 ------------ | -------------
 us-east-1 | [![Launch stack in us-east-1](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=WsLambdaAtEdgeAlienCards&templateURL=https://s3.amazonaws.com/ws-lambda-at-edge/bootstrap/cfn-template.json)
 
-## Lab 0 - Launch the stack
-
-TBD
-
-[Lab 0 - Launch the stack](./Lab0_LaunchTheStack/README.md)
+Need more detailed instructions? Proceed to  
+[Lab 0 - Launch the stack (steps with screenshots)](./Lab0_LaunchTheStack/README.md)
 
 ## Lab 1 - Security
 
-Security always comes first.
+Security is always the top priority.
 
-Learn how to check and improve our website security by configuring HTTP to HTTPs redirect and adding a number of standard security headers to enforce HTTPS connection is always used and prevent XSS.
+Learn how to check and improve website security by configuring HTTP to HTTPs redirect and adding standard security headers to enforce HTTPS connection is always used by the client and prevent XSS.
 
-[Lab 1 - Adding Security headers](./Lab1_Security/README.md)
+[Lab 1 - Security headers](./Lab1_Security/README.md)
 
-## Lab 2 - Content generation
+## Lab 2 - Content Generation
 
-Learn how to create a Lambda function that dynamically generates HTML content that can be cached by CloudFront and returned back to your viewers.
+Learn how to create a Lambda function that dynamically generates HTML content which can be cached by CloudFront and returned back to your viewers.
 
 [Lab 2 - Content generation](./Lab2_ContentGeneration/README.md)
 
@@ -42,13 +59,13 @@ Use Lambda@Edge to introduce pretty semantic URLs to your web application. Prett
 
 ## Lab 5 - Customization
 
-Use Lambda@Edge to serve customized content by updating URI based upon request.
+Learn how to serve content customized for the device type of a viewer.
 
 [Lab 5 - Customization](./Lab5_Customization/README.md)
 
 ## Lab 6 - Origin Selection
 
-Learn how you can use Lambda@Edge to select an origin based on the request. You can select an origin near to your customer or select an origin to serve customized content.
+Learn how you can use Lambda@Edge to select an origin based on the request. You can select the origin closest to your customers or select the origin to serve customized content.
 
 [Lab 6 - Origin Selection](./Lab6_OriginSelection/README.md)
 
