@@ -33,7 +33,7 @@ Need more detailed instructions? Proceed to
 
 ## Lab 1 - Security
 
-Security always comes first.
+Security is always the top priority.
 
 Learn how to check and improve website security by configuring HTTP to HTTPs redirect and adding standard security headers to enforce HTTPS connection is always used by the client and prevent XSS.
 
