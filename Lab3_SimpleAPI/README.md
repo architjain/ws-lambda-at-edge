@@ -9,6 +9,15 @@ Let's implement an API that accepts HTTP POST requests in the format below and i
 POST /api/like?id=<card_id>
 ```
 
+## Steps
+
+[1. Create a Lambda function](#1-create-a-lambda-function)  
+[2. Validate the function works with test-invoke in Lambda Console](#2-validate-the-function-works-with-test-invoke-in-lambda-console)  
+[3. Publish a function version](#3-publish-a-function-version)  
+[4. Create cache behavior for the API URI](#4-create-cache-behavior-for-the-api-uri)  
+[5. Invalidate CloudFront cache](#5-invalidate-cloudfront-cache)  
+[6. The API works now!](#6-the-api-works-now)  
+
 ### 1. Create a Lambda function
 
 Similar to how we did it in the previous labs, create a Lambda function in t"US East (N.Virginia)" region.
