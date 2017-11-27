@@ -65,7 +65,7 @@ Learn how to serve content customized for the device type of a viewer.
 
 ## Lab 6 - Origin Selection
 
-Learn how you can use Lambda@Edge to select an origin based on the request. You can select an origin near to your customer or select an origin to serve customized content.
+Learn how you can use Lambda@Edge to select an origin based on the request. You can select the origin closest to your customers or select the origin to serve customized content.
 
 [Lab 6 - Origin Selection](./Lab6_OriginSelection/README.md)
 
