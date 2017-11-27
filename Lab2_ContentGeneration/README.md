@@ -39,13 +39,13 @@ In the `Basic information` window, select:
 
 Use JavaScript code from [ws-lambda-at-edge-generate-card-page.js](./ws-lambda-at-edge-generate-card-page.js) as a blueprint.
 
-Take a moment to familiarize yourself with the function code and what it does. You will need to replace `FIXME` for the DynamoDB table name and the CloudFront distribution domain name. You can find the resource names in the CloudFormation stack details in CloudFormation Console, or directly in DynamoDB and CloudFront Consoles.
+Take a moment to familiarize yourself with the function code and what it does. You will need to replace `FIXME` with the DynamoDB table name and the CloudFront distribution domain name. You can find the resource names in the CloudFormation stack details in CloudFormation Console, or directly in DynamoDB and CloudFront Consoles.
 
 ![x](./img/02-function-created.png)
 
 #### 1.2 Validate the function works with test-invoke in Lambda Console
 
-Click "Test" and configure the test event. You can use "CloudFront Simple Remote Call" event template. 
+Click `Test` and configure the test event. You can use "CloudFront Simple Remote Call" event template. 
 
 Specify `/card/da8398f4` as the value of the `uri` field.
 
@@ -57,17 +57,17 @@ Execute the test-invoke and validate the function has returned `200` status code
 
 #### 1.3 Publish a function version
 
-Choose "Publish new version" under "Actions", specify an optional description of a function version and click "Publish".
+Choose `Publish new version` under `Actions`, specify an optional description of a function version and click `Publish`.
 
 ![x](./img/05-version-published.png)
 
-#### 1.4 Create a trigger
+#### 1.4 Create the trigger
 
-Choose "Add trigger" under "Triggers", you will be presented with an "Add trigger" dialog:
-* In the "Distribution ID" field, find the CloudFront distribution created for this workshop.  
+Choose `Add trigger` under `Triggers`, you will be presented with an `Add trigger` dialog:
+* In the `Distribution ID` field, find the CloudFront distribution created for this workshop.  
 * Choose the default cache behavior, that is currently the only behavior in the distribution that matches all URI paths with the `*` wildcard.  
-* Choose "Origin Request" event type to trigger the function.
-* Confirm a global replication of the function by choosing "Enable trigger and replicate"
+* Choose `Origin Request` event type to trigger the function.
+* Confirm the global replication of the function by clicking `Enable trigger and replicate`
 
 ![x](./img/07-create-trigger.png)
 
@@ -75,7 +75,11 @@ After the trigger has been created, you will see it in the list of triggers of t
 
 ![x](./img/08-trigger-created.png)
 
-#### 1.5 The generated card details page is now served by CloudFront
+#### 1.5 Wait for the change to propagate
+
+Wait for ~30-60 seconds for the change to propagate and for the Lambda function to get globally replicated.
+
+#### 1.6 The generated card details page is now served by CloudFront
 
 Go to the card details page:  
 https://d123.cloudfront.net/card/da8398f4  
@@ -86,19 +90,26 @@ You should be seeing a page like this:
 
 ### 2. Content generation for the home page
 
-At the moment, the home page of our distribution just show a static HTML file. Let's make it more dynamic by generating it on the fly with Lambda@Edge so that the cards with the highest rating appear on the top and also a short card description pop ups over the image on mouse hover.
+At the moment, the home page of our distribution displays just a static HTML file. Let's make it more dynamic by generating it on the fly with Lambda@Edge so that the cards with the highest rating appear on the top and also a short card description pop ups over the image on mouse hover.
 
+The home page is available at:  
 https://d123.cloudfront.net/
 
 #### 2.1 Create a lambda function
 
-Create a Lambda function similar to the previous one. Name it `ws-lambda-at-edge-generate-home-page` and use JavaScript code from [ws-lambda-at-edge-generate-home-page.js](./ws-lambda-at-edge-generate-home-page.js) as a blueprint.
+Create a Lambda function similar to the previous one.
+
+Name it `ws-lambda-at-edge-generate-home-page`.
+
+Use JavaScript code from [ws-lambda-at-edge-generate-home-page.js](./ws-lambda-at-edge-generate-home-page.js) as a blueprint. Take a moment to familiarize yourself with the function code and what it does.
 
 ![x](./img/12-function-created.png)
 
 #### 2.2 Validate the function works with test-invoke in Lambda Console
 
-Click "Test" and configure the test event. Specify `/index.html` as the value of the `uri` field.
+Click `Test` and configure the test event. You can use "CloudFront Simple Remote Call" event template.
+
+Specify `/index.html` as the value of the `uri` field.
 
 ![x](./img/13-configure-test-event.png)
 
@@ -108,28 +119,32 @@ Execute the test-invoke and validate the function has returned `200` status code
 
 #### 2.3 Publish a function version
 
-Choose "Publish new version" under "Actions", specify an optional description of a function version and click "Publish".
+Choose `Publish new version` under `Actions`, specify an optional description of a function version and click `Publish`.
 
 ![x](./img/15-version-published.png)
 
 #### 2.4 Create cache behavior for the home page
 
-Go to CloudFront Console and find the distribution created for this workshop. Under the "Behaviors" tab, click "Create Behavior". Choose the following settings:
-* Path Pattern: /index.html
-* Viewer Protocol Policy: "Redirect HTTP to HTTPS"
-* Object Caching: Customize
+Go to CloudFront Console and find the distribution created for this workshop.
+
+Under the `Behaviors` tab, click `Create Behavior`. Choose the following settings:
+* `Path Pattern`: `/index.html`
+* `Viewer Protocol Policy`: `Redirect HTTP to HTTPS`
+* `Object Caching`: `Customize`
 * Min, Max and Default TTL: 0, 5, 5 respectively (this would cache the generated home page for 5 seconds max)
-* Lambda Function Associations: Origin Request = <lambda version ARN from the previous step>
+* `Lambda Function Associations`: `Origin Request` = `<lambda version ARN from the previous step>`
   
 ![x](./img/16-create-cb-and-trigger.png)
 
 #### 2.5 Wait for the change to propagate
 
-After any modification of a CloudFront distribution, the change should be propagated globally to all CloudFront edge locations. The propagation status is indicated as "In Progress" and "Deployed" when it's complete. Usually ~30-60seconds is enough for the change to take effect, even though the status may be still "In Progress". To be 100% certain though you can wait until the change is fully deployed.
+After any modification of a CloudFront distribution, the change propagates globally to all CloudFront edge locations. The propagation status is indicated as `In Progress` and `Deployed` when it's complete. Usually ~30-60seconds is enough for the change to take effect, even though the status may be still `In Progress`. To be 100% certain though you can wait until the change is fully deployed, but it's not needed for the purpose of the workshop.
 
 #### 2.6 Invalidate CloudFront cache
 
-CloudFront may have already cached the old version home page, let's purge any stale objects from the cache. Submit a wildcard invalidation '/*'.
+CloudFront may have already cached the old version of the home page, let's purge any stale objects from the cache.
+
+Go to `Invalidations` tab and create a new invalidation. Specify '/*' as the path to invalidate.
 
 ![x](./img/17-invalidate.png)
 
