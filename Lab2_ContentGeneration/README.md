@@ -35,7 +35,7 @@ We will generate the content in Lambda functions triggered by origin-request eve
 [2.1 Create a lambda function](#21-create-a-lambda-function)  
 [2.2 Validate the function works with test-invoke in Lambda Console](#22-validate-the-function-works-with-test-invoke-in-lambda-console)  
 [2.3 Publish a function version](#23-publish-a-function-version)  
-[2.4 Create cache behavior for the home page](#24-create-cache-behavior-for-the-home-page)  
+[2.4 Create a cache behavior for the home page](#24-create-a-cache-behavior-for-the-home-page)  
 [2.5 Wait for the change to propagate](#25-wait-for-the-change-to-propagate)  
 [2.6 Invalidate CloudFront cache](#26-invalidate-cloudfront-cache)  
 [2.7 The generated home page is now served by CloudFront!](#27-the-generated-home-page-is-now-served-by-cloudfront)  
