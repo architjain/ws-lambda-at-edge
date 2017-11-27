@@ -59,7 +59,7 @@ Use Lambda@Edge to introduce pretty semantic URLs to your web application. Prett
 
 ## Lab 5 - Customization
 
-TBD - Overview
+Lear how to serve content customized for the device type of a viewer.
 
 [Lab 5 - Customization](./Lab5_Customization/README.md)
 
