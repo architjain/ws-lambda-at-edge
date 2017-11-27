@@ -21,6 +21,25 @@ https://d123.cloudfront.net/card/da8398f4  (currently, it shows `404 Not Found` 
 
 We will generate the content in Lambda functions triggered by origin-request event so that the generated HTML files can be cached by CloudFront. Even if the TTL is a few seconds, it will still absorb traffic spikes and lower the number of function invocations.
 
+## Steps
+
+[1. Content generation for the card details page](#1-content-generation-for-the-card-details-page)  
+[1.1 Create a Lambda function](#11-create-a-lambda-function)  
+[1.2 Validate the function works with test-invoke in Lambda Console](#12-validate-the-function-works-with-test-invoke-in-lambda-console)  
+[1.3 Publish a function version](#13-publish-a-function-version)  
+[1.4 Create the trigger](#14-create-the-trigger)  
+[1.5 Wait for the change to propagate](#15-wait-for-the-change-to-propagate)  
+[1.6 The generated card details page is now served by CloudFront](#16-the-generated-card-details-page-is-now-served-by-cloudfront)  
+
+[2. Content generation for the home page](#2-content-generation-for-the-home-page)  
+[2.1 Create a lambda function](#21-create-a-lambda-function)  
+[2.2 Validate the function works with test-invoke in Lambda Console](#22-validate-the-function-works-with-test-invoke-in-lambda-console)  
+[2.3 Publish a function version](#23-publish-a-function-version)  
+[2.4 Create cache behavior for the home page](#24-create-cache-behavior-for-the-home-page)  
+[2.5 Wait for the change to propagate](#25-wait-for-the-change-to-propagate)  
+[2.6 Invalidate CloudFront cache](#26-invalidate-cloudfront-cache)  
+[2.7 The generated home page is now served by CloudFront!](#27-the-generated-home-page-is-now-served-by-cloudfront)  
+
 ### 1. Content generation for the card details page
 
 Let's create a Lambda function that generates HTML responses for the card details page, such as  
