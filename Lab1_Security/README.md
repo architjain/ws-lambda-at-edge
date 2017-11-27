@@ -4,6 +4,10 @@ Security always comes first.
 
 Let's check and improve our website security by configuring HTTP to HTTPs redirect and adding a number of standard security headers to enforce HTTPS connection is always used and prevent XSS.
 
+In modern web, many security features are implemented and enforced by web-browsers. Such the client side security features are usually enabled and configured by HTTP response headers sent by a web-server. However, web-servers may respond with some or all of the security headers missing. This lab shows how to add security headers to responses from an origin server configured for a CloudFront distribution. In our case, the origin is an S3 bucket.
+
+First we will scan our website by observatory.mozilla.org and see if it finds any security features missing. Next, we will fix potential security vulnerability by adding several security headers to all HTTP responses.
+
 ## Steps
 
 [1. Scan the website for security vulnerabilities](#1-scan-the-website-for-security-vulnerabilities)  
@@ -21,19 +25,25 @@ Let's check and improve our website security by configuring HTTP to HTTPs redire
 
 Go to https://observatory.mozilla.org/ and scan the CloudFront distribution domain name created for you by the CloudFormation stack, `d123.cloudfront.net`.
 
+**NOTE**: Here and below throughout the workshop, replace the example domain name `d123.cloudfront.net` with the unique name of your CloudFront distribution.
+
 The result of the scan will be unsatisfactory:
 
 ![x](./img/security-bad.png)
 
 ### 2. Create a Lambda function
 
-Create a Lambda function in `us-east-1` region that would add the security headers to all responses from the origin in the CloudFront distribution.
+Create a Lambda function that would add the security headers to all responses from the origin in the CloudFront distribution.
+
+Go to Lambda Console, select "US East (N.Virginia)" region in the top left corner. Go to "Functions", click "Create function" and click "Author from scratch".
 
 Choose `Node.js 6.10` runtime and the IAM role named `ws-lambda-edge-basic-<UNIQUE_ID>`, which was created by CloudFormation stack in your account, as an execution role of the function. This will allow pushing logs from your function to CloudWatch Logs.
 
+![x](./img/create-function.png)
+
 Use JavaScript code from [ws-lambda-at-edge-add-security-headers.js](./ws-lambda-at-edge-add-security-headers.js) as a blueprint.
 
-![x](./img/create-function.png)
+Take a moment to familiarize yourself with the function code and what it does.
 
 ### 3. Validate the function works with test-invoke in Lambda Console
 
