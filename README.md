@@ -35,9 +35,9 @@ Need more detailed instructions? Proceed to
 
 Security always comes first.
 
-Learn how to check and improve our website security by configuring HTTP to HTTPs redirect and adding a number of standard security headers to enforce HTTPS connection is always used and prevent XSS.
+Learn how to check and improve our website security by configuring HTTP to HTTPs redirect and adding standard security headers to enforce HTTPS connection is always used by the client and prevent XSS.
 
-[Lab 1 - Adding Security headers](./Lab1_Security/README.md)
+[Lab 1 - Security headers](./Lab1_Security/README.md)
 
 ## Lab 2 - Content Generation
 
