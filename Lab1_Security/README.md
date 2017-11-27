@@ -37,7 +37,10 @@ Create a Lambda function that would add the security headers to all responses fr
 
 Go to Lambda Console, select "US East (N.Virginia)" region in the top left corner. Go to `Functions`, click `Create function` and click `Author from scratch`.
 
-Choose `Node.js 6.10` runtime and the IAM role named `ws-lambda-edge-basic-<UNIQUE_ID>`, which was created by CloudFormation stack in your account, as an execution role of the function. This will allow pushing logs from your function to CloudWatch Logs.
+In the `Basic information` window, select:
+* `Name`: ws-lambda-at-edge-add-security-headers
+* `Role`: `Choose an existing role`
+* `Existing role`: `ws-lambda-at-edge-basic-<UNIQUE_ID>` (this allows the function to push the logs to CloudWatch Logs)
 
 ![x](./img/create-function.png)
 
