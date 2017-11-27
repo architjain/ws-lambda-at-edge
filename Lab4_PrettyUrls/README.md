@@ -21,12 +21,19 @@ We will cover both of these approaches with Lambda@Edge.
 
 ## Steps
 
-[]()  
-[]()  
-[]()  
-[]()  
-[]()  
-[]()  
+[1. Redirect response generation](#1-redirect-response-generation)  
+[1.1 Create a Lambda function](#11-create-a-lambda-function)  
+[1.2 Validate the function works in Lambda Console](#12-validate-the-function-works-in-lambda-console)  
+[1.3 Publish a function version](#13-publish-a-function-version)  
+[1.4 Create a cache behavior](#14-create-a-cache-behavior)  
+[1.5 Redirects now work!](#15-redirects-now-work)  
+
+[2. URI rewrite](#2-uri-rewrite)  
+[2.1 Create/modify the Lambda function](#21-createmodify-the-lambda-function)  
+[2.2 Validate the function works in Lambda Console](#22-validate-the-function-works-in-lambda-console)  
+[2.3 Publish a function version](#23-publish-a-function-version)  
+[2.4 Update the trigger](#24-update-the-trigger)  
+[2.5 URI rewrite now works!](#25-uri-rewrite-now-works)  
 
 ### 1. Redirect response generation
 
@@ -83,7 +90,7 @@ Under the `Behaviors` tab, click `Create Behavior`. Choose the following setting
   
 ![x](./img/05-create-cache-behavior.png)
 
-#### 1.4 Redirects now work!
+#### 1.5 Redirects now work!
 
 You can test it with command line:
 
